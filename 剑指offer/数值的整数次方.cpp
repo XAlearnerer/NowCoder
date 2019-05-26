@@ -45,7 +45,8 @@ public:
             double cur = helper1(base, exponent / 2);
             return 1/(cur*cur*base);
         }
-
     }
+
+
 };
 
