@@ -33,6 +33,10 @@ public:
 		unordered_map<RandomListNode*, RandomListNode*> m;
 		m[pHead] = res;
 
+
+        //	不能写成 m[pHead->random] = res->random;
+        //  复制的链表的 random 指针不能指向原链表中的值，而应该指向 原链表random的值对应在复制链表中的值
+
 		RandomListNode* cur = pHead->next;
 		while (cur)
 		{
@@ -51,40 +55,6 @@ public:
 			be2 = be2->next;
 			tmp = tmp->next;
 		}
-		return res;
-	}
-};
-
-
-
-class Solution2 {
-public:
-	RandomListNode *Clone(RandomListNode *pHead) {
-		if (!pHead) return NULL;
-		RandomListNode *res = new RandomListNode(pHead->label);
-		RandomListNode *be = res;
-		RandomListNode *cur = pHead->next;
-
-		unordered_map<RandomListNode*, RandomListNode*> map;
-		map[pHead] = res;
-		while (cur) {
-			RandomListNode *t = new RandomListNode(cur->label);
-			be->next = t;
-			map.insert(pair<RandomListNode*, RandomListNode*>(cur, t));
-			be = be->next;
-			cur = cur->next;
-		}
-
-		RandomListNode *be2 = res;
-		RandomListNode *tmp = pHead;
-
-		while (be2)
-		{
-			be2->random = map[tmp->random];
-			be2 = be2->next;
-			tmp = tmp->next;
-		}
-
 		return res;
 	}
 };
