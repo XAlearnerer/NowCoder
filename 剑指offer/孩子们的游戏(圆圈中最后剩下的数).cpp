@@ -72,11 +72,11 @@ public:
 
 };
 
-int main()
-{
-	Solution a;
-	int n = 10, m = 10;
-	cout << a.LastRemaining_Solution(n, m) << endl;
-	cout << a.LastRemaining_Solution2(n, m) << endl;
-	return 0;
-}
+//int main()
+//{
+//	Solution a;
+//	int n = 10, m = 10;
+//	cout << a.LastRemaining_Solution(n, m) << endl;
+//	cout << a.LastRemaining_Solution2(n, m) << endl;
+//	return 0;
+//}
