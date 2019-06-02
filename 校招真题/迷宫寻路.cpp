@@ -82,32 +82,32 @@ public:
 
 };
 
-int main()
-{
-	int row, col;
-
-	 cin >> row >> col;
-	 vector<vector<char>> v(row, vector<char>(col, 0));
-	 for (int i = 0; i < row; ++i)
-	 {
-	 	for (int j = 0; j < col; ++j)
-	 		cin >> v[i][j];
-	 }
-
-	//row = 5, col = 5;
-	//vector<vector<char> > v = {
-	//	{'0','2','1','1','1'},
-	//	{'0','0','a','0','1'},
-	//	{'0','1','0','0','3'},
-	//	{'0','1','0','0','1'},
-	//	{'0','1','1','1','1'} };
-
-
-	Solution n;
-	cout << n.shortestpath(v) << endl;
-
-	return 0;
-}
+//int main()
+//{
+//	int row, col;
+//
+//	 cin >> row >> col;
+//	 vector<vector<char>> v(row, vector<char>(col, 0));
+//	 for (int i = 0; i < row; ++i)
+//	 {
+//	 	for (int j = 0; j < col; ++j)
+//	 		cin >> v[i][j];
+//	 }
+//
+//	//row = 5, col = 5;
+//	//vector<vector<char> > v = {
+//	//	{'0','2','1','1','1'},
+//	//	{'0','0','a','0','1'},
+//	//	{'0','1','0','0','3'},
+//	//	{'0','1','0','0','1'},
+//	//	{'0','1','1','1','1'} };
+//
+//
+//	Solution n;
+//	cout << n.shortestpath(v) << endl;
+//
+//	return 0;
+//}
 
 
 
