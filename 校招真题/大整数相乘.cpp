@@ -6,15 +6,15 @@ using namespace std;
 
 // 72106547548473106236 * 982161082972751393
 // = 70820244829634538040848656466105986748
-int main()
+int main_WORNG() 
 {
 	string s1, s2;
 	//cin >> s1 >> s2;
-	s1 = "72106547548473106236";
-	s2 = "982161082972751393";
+	//s1 = "72106547548473106236";
+	//s2 = "982161082972751393";
 
-	//s1 = "19";
-	//s2 = "99";
+	s1 = "19";
+	s2 = "90";
 
 	int carry = 0, res = 0;
 	string fin;
@@ -72,52 +72,44 @@ int main()
 
 
 
-
-
-
-
-
-string Mul(string left, string right)
-{
-
-	size_t Lsize = left.size();
-	size_t Rsize = right.size();
-	size_t Size = Lsize + Rsize;
-	string res(Size, '0');
-
-	int takevoer = 0;//进位
-	int offset = 0;//移位
-
-	size_t idx = 1, j = 1;
-	for (idx = 1; idx <= Rsize; ++idx)
-	{
-		takevoer = 0;
-		int rightnum = right[Rsize - idx] - '0';
-		//计算每一位与left相乘
-		for (j = 1; j <= Lsize; ++j)
-		{
-			char resBit = res[Size - j - offset] - '0';
-			int num = rightnum * (left[Lsize - j] - '0') + takevoer + resBit;
-			takevoer = num / 10;
-			res[Size - j - offset] = num % 10 + '0';
-		}
-		if (takevoer != 0)
-			res[Size - j - offset] = takevoer + '0';
-		offset++;
-	}
-
-	//如果没有进位的话，res最高位没有数字
-	if (res[0] == '0')
-		res.erase(0, 1);
-	return res;
-}
-
-int main1()
+int main_大整数()
 {
 	string s1, s2;
-	s1 = "72106547548473106236";
-	s2 = "982161082972751393";
-	string str = Mul(s1, s2);
-	cout << str << endl;
+	cin >> s1 >> s2;
+	//s1 = "72106547548473106236";
+	//s2 = "982161082972751393";
+
+	int len1 = s1.size(), len2 = s2.size();
+	int takeover = 0, offset = 0;
+	int len = len1 + len2;
+	string res(len, '0');
+
+	for (int i = 1; i <= len1; ++i)
+	{
+		int right = s1[len1 - i] - '0';
+		int j;
+		takeover = 0;
+		for (j = 1; j <= len2; ++j)
+		{
+			int post = res[len - j - offset] - '0';
+			int num = post + takeover + right*(s2[len2 - j] - '0');
+			takeover = num / 10;
+			res[len - j - offset] = num % 10 + '0';
+		}
+		if (takeover != 0)
+			res[len - j - offset] = takeover + '0';
+		++offset;
+	}
+
+	if (res[0] == '0') res.erase(res.begin());
+	cout << res << endl;
 	return 0;
 }
+
+
+
+
+
+
+
+
