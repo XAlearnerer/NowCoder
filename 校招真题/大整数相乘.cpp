@@ -72,7 +72,7 @@ int main_WORNG()
 
 
 
-int main_´óÕûÊý()
+int main_dazhengshu()
 {
 	string s1, s2;
 	cin >> s1 >> s2;
