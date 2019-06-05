@@ -9,41 +9,7 @@ public:
 		if (data.empty()) return 0;
 		vector<int> copy(data.begin(), data.end());
 		long long res = helper(data, copy, 0, data.size() - 1);
-		//long long res = InversePairs(data, copy, 0, data.size() - 1);
 		return res % 1000000007;
-
-	}
-	long long InversePairs(vector<int>& data, vector<int>& copy, int low, int high)
-	{
-		if (low == high)
-		{
-			copy[low] = data[low];
-			return 0;
-		}
-		long long left;
-		long long right;
-		int length = (high - low) >> 2;
-		left = InversePairs(copy, data, low, (low + (length)));
-		right = InversePairs(copy, data, (low + (length)+1), high);
-		int i = low + (length);
-		int j = high;
-		int copy_index = high;
-		long long count = 0;
-		while (i >= low&&j >= (low + (length)+1))
-		{
-			if (data[i]>data[j])
-			{
-				count += j - (low + (length));
-				copy[copy_index--] = data[i--];
-			}
-			else
-			{
-				copy[copy_index--] = data[j--];
-			}
-		}
-		for (; i >= low; i--) copy[copy_index--] = data[i];
-		for (; j >= (low + (length)+1); j--) copy[copy_index--] = data[j];
-		return left + count + right;
 	}
 
 	long long helper(vector<int>& data, vector<int>& copy, int low, int high)
