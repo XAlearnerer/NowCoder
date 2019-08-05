@@ -4,7 +4,7 @@
 
 using namespace std;
 
-class Solution {
+class Solution2 {
 public:
 	int GetNumberOfK(vector<int> data, int k) {
 		if (data.empty()) return 0;
@@ -34,3 +34,40 @@ public:
 		return res;
 	}
 };
+
+
+class Solution {
+public:
+	int GetNumberOfK(vector<int> data, int k) {
+		if (data.empty()) return 0;
+		if (data.size() == 1)
+		{
+			if (data[0] == k) return 1;
+			else return 0;
+		}
+		int l = 0, r = data.size() - 1;
+		int res = 0;
+		while (l<r)
+		{
+			int m = l + (r - l) / 2;
+			if (data[m] == k)
+			{
+				int m1 = m;
+				while (m>0 && data[--m] == k) ++res;
+				while (m1<data.size() - 1 && data[++m1] == k) ++res;
+				++res;
+				break;
+			}
+			else if (data[m]<k)
+			{
+				l = m + 1;
+			}
+			else {
+				r = m;
+			}
+		}
+		return res;
+
+	}
+};
+

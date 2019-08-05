@@ -3,7 +3,7 @@
 
 using namespace std;
 
-class Solution {
+class Solution2 {
 public:
 	int movingCount(int threshold, int rows, int cols)
 	{
@@ -41,3 +41,50 @@ public:
 		return usm;
 	}
 };
+
+class Solution {
+public:
+	int movingCount(int threshold, int rows, int cols)
+	{
+		if (rows == 0 || cols == 0) return 0;
+		vector<vector<int>> vis(rows, vector<int>(cols, 0));
+		int res = 0;
+		helper(threshold, rows, cols, res, 0, 0, vis);
+		return res;
+	}
+
+	void helper(int threshold, int rows, int cols, int& res, int i, int j,
+		vector<vector<int>>& vis)
+	{
+		if (i<0 || j<0 || i >= rows || j >= cols || vis[i][j] == 1) return;
+		vis[i][j] = 1;
+		if (check(i, j)<=threshold)
+		{
+			++res;
+			helper(threshold, rows, cols, res, i + 1, j, vis);
+			helper(threshold, rows, cols, res, i - 1, j, vis);
+			helper(threshold, rows, cols, res, i, j + 1, vis);
+			helper(threshold, rows, cols, res, i, j - 1, vis);
+		}
+		//vis[i][j] = 0;
+
+	}
+
+	int check(int i, int j)
+	{
+		int res = 0;
+		while (i != 0)
+		{
+			res += i % 10;
+			i /= 10;
+		}
+		while (j != 0)
+		{
+			res += j % 10;
+			j /= 10;
+		}
+		return res;
+	}
+
+};
+

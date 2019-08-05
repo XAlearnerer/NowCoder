@@ -4,7 +4,7 @@
 
 using namespace std;
 
-class Solution {
+class Solution2 {
 public:
 	vector<int> multiply(const vector<int>& A) {
 		if (A.empty()) return {};
@@ -36,3 +36,25 @@ public:
 	}
 };
 
+
+class Solution {
+public:
+	vector<int> multiply(const vector<int>& A) {
+		if (A.empty()) return {};
+		int len = A.size();
+		vector<int> l(len, 1), r(len, 1);
+		for (int i = 1; i < len; ++i)
+		{
+			l[i] = l[i - 1] * A[i - 1];
+		}
+		for (int i = len - 2; i >= 0; --i)
+		{
+			r[i] = r[i + 1] * A[i + 1];
+		}
+		vector<int> res;
+		for (int i = 0; i < len; ++i)
+			res.push_back(l[i] * r[i]);
+
+		return res;
+	}
+};
